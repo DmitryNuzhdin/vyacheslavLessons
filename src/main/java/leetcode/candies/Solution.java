@@ -1,5 +1,6 @@
 package leetcode.candies;
 
+import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,26 +19,31 @@ public class Solution {
                 buffer.put(item, 1);
             }
         }
-        if (brotherBuffer.isEmpty()) {
-            for (Map.Entry<Integer, Integer> kinde2 : buffer.entrySet()) {
-                if (kinde2.getValue() > 1) {
-                    brotherBuffer.addAll(IntStream.range(1, kinde2.getValue()).map((o) -> o = kinde2.getKey()).boxed().collect(Collectors.toList()));
-                    kinde2.setValue(1);
-                }
-            }
-        }
-        for (Map.Entry<Integer, Integer> kinde : buffer.entrySet()) {
-            if (!brotherBuffer.isEmpty()) {
-                brother.add(brotherBuffer.remove(0));
-            } else {
-                ostatok++;
-            }
-            if (sister.size() < brother.size()) {
-                sister.add(kinde.getKey());
-                kinde.setValue(kinde.getValue() - 1);
-            }
-        }
-        return sister.size() + ostatok / 2;
+        Map<Integer, Integer> buffer2 =  Arrays.stream(candies).boxed().collect(Collectors.toMap(o->o, o ->1, Integer::sum));
+        //return Math.min(candies.length/2, buffer2.size());
+        return Math.min(candies.length/2, (int)Arrays.stream(candies).distinct().count());
+        //return Math.min(candies.length/2, buffer.size());
+
+//        if (brotherBuffer.isEmpty()) {
+//            for (Map.Entry<Integer, Integer> kinde2 : buffer.entrySet()) {
+//                if (kinde2.getValue() > 1) {
+//                    brotherBuffer.addAll(IntStream.range(1, kinde2.getValue()).map((o) -> o = kinde2.getKey()).boxed().collect(Collectors.toList()));
+//                    kinde2.setValue(1);
+//                }
+//            }
+//        }
+//        for (Map.Entry<Integer, Integer> kinde : buffer.entrySet()) {
+//            if (!brotherBuffer.isEmpty()) {
+//                brother.add(brotherBuffer.remove(0));
+//            } else {
+//                ostatok++;
+//            }
+//            if (sister.size() < brother.size()) {
+//                sister.add(kinde.getKey());
+//                kinde.setValue(kinde.getValue() - 1);
+//            }
+//        }
+//        return sister.size() + ostatok / 2;
     }
 
     public static void main(String[] args) {
