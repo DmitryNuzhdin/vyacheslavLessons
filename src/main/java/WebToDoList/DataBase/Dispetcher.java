@@ -5,12 +5,14 @@ import WebToDoList.Models.Task.Priority;
 import WebToDoList.Models.Task.Task;
 import WebToDoList.Models.Task.TaskBuilder;
 import WebToDoList.Models.User.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class Dispetcher implements IDispetcher{
     private Db db;
 

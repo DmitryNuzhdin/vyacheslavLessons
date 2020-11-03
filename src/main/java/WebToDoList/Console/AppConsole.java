@@ -7,11 +7,13 @@ import WebToDoList.Models.Task.Task;
 import WebToDoList.Models.Task.TaskBuilder;
 import WebToDoList.Models.User.IUser;
 import WebToDoList.Models.User.User;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.Scanner;
 import java.util.UUID;
 
+@Component
 public class AppConsole extends AMyInterface {
     private IDispetcher dbDispeptcher;
     private IUser activeUser;
